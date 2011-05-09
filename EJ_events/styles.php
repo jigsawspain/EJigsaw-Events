@@ -335,21 +335,21 @@ h2.EJE img
 	background: #E3EEF7;
 }
 
-.upcoming
+/*.upcoming
 {
 	font-size: 0.8em;
 	padding: 3px;
-}
+}*/
 
-.upcoming a
+/*.upcoming a
 {
 	color: #009ACA;
-}
+}*/
 
-.upcoming p
+/*.upcoming p
 {
 	margin: 0;
-}
+}*/
 
 .we
 {
