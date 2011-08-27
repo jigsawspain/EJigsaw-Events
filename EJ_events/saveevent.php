@@ -1,7 +1,5 @@
 <?php
 
-/* File Build 0.2 */
-
 function to_utf8( $string ) { 
     if ( preg_match('%^(?: 
       [\x09\x0A\x0D\x20-\x7E]            # ASCII 
@@ -29,10 +27,10 @@ if ($_SESSION['key'] != $_POST['key'] or $_POST['key']=="")
 	require('../../init.inc.php');
 	if (!isset($_POST['id']))
 	{
-	 $query = "INSERT INTO {$EJ_mysql->prefix}module_EJ_events SET EJ_eventTitle='".urldecode(to_utf8($_POST['title']))."', EJ_eventText='".str_replace(array("\n", "<br>", "<br/>", "£"),array("<br />","<br />","<br />", "&pound;"),urldecode(to_utf8($_POST['desc']))))."', EJ_eventCat = {$_POST['cat']}, EJ_eventDate = '".date("Y-m-d", strtotime($_POST['date']))."', EJ_eventImage='".$_POST['image']."', EJ_eventHidden = ".$_POST['hidden'].", EJ_eventPoster = '".$_POST['poster']."', EJ_eventTime = '".$_POST['time']."', EJ_eventLoc1 = '".$_POST['location1']."', EJ_eventLoc2 = '".$_POST['location2']."', EJ_eventLoc3 = '".$_POST['location3']."', EJ_eventLoc4 = '".$_POST['location4']."', EJ_eventLoc5 = '".$_POST['location5']."', EJ_eventContact = '".$_POST['contact']."'";
+	 $query = "INSERT INTO {$EJ_mysql->prefix}module_EJ_events SET EJ_eventTitle='".addslashes(urldecode($_POST['title']))."', EJ_eventText='".addslashes(str_replace(array("\n", "<br>", "<br/>", "£"),array("<br />","<br />","<br />", "&pound;"),to_utf8(urldecode($_POST['desc']))))."', EJ_eventCat = {$_POST['cat']}, EJ_eventDate = '".date("Y-m-d", strtotime($_POST['date']))."', EJ_eventImage='".$_POST['image']."', EJ_eventHidden = ".$_POST['hidden'].", EJ_eventPoster = '".$_POST['poster']."', EJ_eventTime = '".$_POST['time']."', EJ_eventLoc1 = '".$_POST['location1']."', EJ_eventLoc2 = '".$_POST['location2']."', EJ_eventLoc3 = '".$_POST['location3']."', EJ_eventLoc4 = '".$_POST['location4']."', EJ_eventLoc5 = '".$_POST['location5']."', EJ_eventContact = '".$_POST['contact']."'";
 	} else
 	{
-		$query = "UPDATE {$EJ_mysql->prefix}module_EJ_events SET EJ_eventTitle='".urldecode(to_utf8($_POST['title']))."', EJ_eventText='".str_replace(array("\n", "<br>", "<br/>", "£"),array("<br />","<br />","<br />", "&pound;"),urldecode(to_utf8($_POST['desc']))))."', EJ_eventCat = ".$_POST['cat'].", EJ_eventDate = '".date("Y-m-d", strtotime($_POST['date']))."', EJ_eventImage='".$_POST['image']."', EJ_eventHidden = ".$_POST['hidden'].", EJ_eventPoster = '".$_POST['poster']."', EJ_eventTime = '".$_POST['time']."', EJ_eventLoc1 = '".$_POST['location1']."', EJ_eventLoc2 = '".$_POST['location2']."', EJ_eventLoc3 = '".$_POST['location3']."', EJ_eventLoc4 = '".$_POST['location4']."', EJ_eventLoc5 = '".$_POST['location5']."', EJ_eventContact = '".$_POST['contact']."' WHERE EJ_eventId = ".$_POST['id']."";
+		$query = "UPDATE {$EJ_mysql->prefix}module_EJ_events SET EJ_eventTitle='".addslashes(urldecode($_POST['title']))."', EJ_eventText='".addslashes(str_replace(array("\n", "<br>", "<br/>", "£"),array("<br />","<br />","<br />", "&pound;"),to_utf8(urldecode($_POST['desc']))))."', EJ_eventCat = ".$_POST['cat'].", EJ_eventDate = '".date("Y-m-d", strtotime($_POST['date']))."', EJ_eventImage='".$_POST['image']."', EJ_eventHidden = ".$_POST['hidden'].", EJ_eventPoster = '".$_POST['poster']."', EJ_eventTime = '".$_POST['time']."', EJ_eventLoc1 = '".$_POST['location1']."', EJ_eventLoc2 = '".$_POST['location2']."', EJ_eventLoc3 = '".$_POST['location3']."', EJ_eventLoc4 = '".$_POST['location4']."', EJ_eventLoc5 = '".$_POST['location5']."', EJ_eventContact = '".$_POST['contact']."' WHERE EJ_eventId = ".$_POST['id']."";
 	}
 	$EJ_mysql->query($query);
 	echo "OK";
